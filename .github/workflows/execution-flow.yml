@@ -86,6 +86,6 @@ jobs:
       - name: Get Output Information
         run: |
           echo "Something went wrong"
-          echo "info: ${{ github }}"
+          echo "info: ${{ toJson(github) }}"
 
 # This is the comment
