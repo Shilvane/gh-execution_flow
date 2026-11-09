@@ -10,8 +10,14 @@ on:
     #    secrets:
     #       some_secret:
     #            required: false
+        outputs:
+            result:
+                description: Result of this Workflow
+                value: ${{ jobs.deploy.outputs.outcome }}
 jobs:
     Deploy:
+        outputs:
+            outcome: ${{ steps.set_output.outputs.something }}
         runs-on: ubuntu-latest
         steps:
             - name: Get Uploaded code
@@ -22,3 +28,6 @@ jobs:
               run: ls -l
             - name: Output Information
               run: echo "Deploying and Uploading"
+            - name: Set result output
+              id: set_output
+              run: echo "something=success" >> $GITHUB_OUTPUT"
