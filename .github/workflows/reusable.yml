@@ -15,7 +15,7 @@ on:
                 description: Result of this Workflow
                 value: ${{ jobs.deploy.outputs.outcome }}
 jobs:
-    Deploy:
+    deploy:
         outputs:
             outcome: ${{ steps.set_output.outputs.something }}
         runs-on: ubuntu-latest
@@ -30,4 +30,4 @@ jobs:
               run: echo "Deploying and Uploading"
             - name: Set result output
               id: set_output
-              run: echo "something=success" >> $GITHUB_OUTPUT"
+              run: echo "something=success" >> $GITHUB_OUTPUT
